@@ -1,8 +1,8 @@
-appetizer_items = ["Appetizers", ["Wings", "Cookies", "Spring Rolls"]]
-entree_items = ["Entree", ["Salmon", "Steak",
+APPETIZER_ITEMS = ["Appetizers", ["Wings", "Cookies", "Spring Rolls"]]
+ENTREE_ITEMS = ["Entree", ["Salmon", "Steak",
                            "Meat Tornado", "A Literal Garden"]]
-dessert_items = ["Dessert", ["Ice Cream", "Cake", "Pie"]]
-drink_items = ["Drinks", ["Coffee", "Tea", "Unicorn Tears"]]
+DESSERT_ITEMS = ["Dessert", ["Ice Cream", "Cake", "Pie"]]
+DRINK_ITEMS = ["Drinks", ["Coffee", "Tea", "Unicorn Tears"]]
 
 # found the method of lineBreak from LepordShark from StackOverflow
 
@@ -51,9 +51,25 @@ def orderPrompt():
     centerText("What would you like to order?")
     lineBreak()
 
+class Menu():
+        def __init__(self, name, quantity = 0):
+            self.name = name
+            self.quantitiy = quantity
+
+def populate_menu():
+    menu_items = []
+    for item in APPETIZER_ITEMS[1]:
+       Menu([item])
+    print(menu_items)
+
 
 def orderUp():
+    populate_menu()
     order_request = input("> ").capitalize()
+
+    order = []
+   
+
     if (order_request != "Quit"):
         print(f"** 1 order of {order_request} have been added to your meal **")
         order_request = input("> ")
@@ -61,12 +77,13 @@ def orderUp():
         print("bye")
 
 
+
 def initalPrompt():
     welcomeMessage()
-    menuList(appetizer_items)
-    menuList(entree_items)
-    menuList(dessert_items)
-    menuList(drink_items)
+    menuList(APPETIZER_ITEMS)
+    menuList(ENTREE_ITEMS)
+    menuList(DESSERT_ITEMS)
+    menuList(DRINK_ITEMS)
     orderPrompt()
 
 
