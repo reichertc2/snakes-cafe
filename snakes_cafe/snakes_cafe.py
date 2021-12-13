@@ -1,10 +1,12 @@
-appetizer_items = ["Appetizers", ["Wings", "Cookies", "Spring Rolls"]]
-entree_items = ["Entree", ["Salmon", "Steak",
+APPETIZER_ITEMS = ["Appetizers", ["Wings", "Cookies", "Spring Rolls"]]
+ENTREE_ITEMS = ["Entree", ["Salmon", "Steak",
                            "Meat Tornado", "A Literal Garden"]]
-dessert_items = ["Dessert", ["Ice Cream", "Cake", "Pie"]]
-drink_items = ["Drinks", ["Coffee", "Tea", "Unicorn Tears"]]
+DESSERT_ITEMS = ["Dessert", ["Ice Cream", "Cake", "Pie"]]
+DRINK_ITEMS = ["Drinks", ["Coffee", "Tea", "Unicorn Tears"]]
 
+menu_dict = dict({"Wings":0, "Cookies":0, "Spring Rolls":0,"Salmon":0, "Steak":0,"Meat Tornado":0, "A Literal Garden":0,"Ice Cream":0, "Cake":0, "Pie":0,"Coffee":0, "Tea":0, "Unicorn Tears":0})
 # found the method of lineBreak from LepordShark from StackOverflow
+order = []
 
 
 def lineBreak():
@@ -51,22 +53,41 @@ def orderPrompt():
     centerText("What would you like to order?")
     lineBreak()
 
+class Menu():
+        def __init__(self, name, quantity = 0):
+            self.name = name
+            self.quantitiy = quantity
+
+def populate_menu():
+    pass
+    
 
 def orderUp():
+    populate_menu()
+    # print('menu_dict before order',menu_dict)
     order_request = input("> ").capitalize()
+    order.append(order_request )
+    # print('My Order', order)
+
     if (order_request != "Quit"):
-        print(f"** 1 order of {order_request} have been added to your meal **")
-        order_request = input("> ")
+        
+        # print('order:', order_request)
+        menu_dict[order_request] += 1
+        print(f"** {menu_dict[order_request]} order of {order_request}(s) have been added to your meal **")
+            # print('menu_dict after order',menu_dict)
+        orderUp()
+
     else:
         print("bye")
 
 
+
 def initalPrompt():
     welcomeMessage()
-    menuList(appetizer_items)
-    menuList(entree_items)
-    menuList(dessert_items)
-    menuList(drink_items)
+    menuList(APPETIZER_ITEMS)
+    menuList(ENTREE_ITEMS)
+    menuList(DESSERT_ITEMS)
+    menuList(DRINK_ITEMS)
     orderPrompt()
 
 
