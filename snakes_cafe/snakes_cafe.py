@@ -4,7 +4,9 @@ ENTREE_ITEMS = ["Entree", ["Salmon", "Steak",
 DESSERT_ITEMS = ["Dessert", ["Ice Cream", "Cake", "Pie"]]
 DRINK_ITEMS = ["Drinks", ["Coffee", "Tea", "Unicorn Tears"]]
 
+menu_dict = dict({"Wings":0, "Cookies":0, "Spring Rolls":0,"Salmon":0, "Steak":0,"Meat Tornado":0, "A Literal Garden":0,"Ice Cream":0, "Cake":0, "Pie":0,"Coffee":0, "Tea":0, "Unicorn Tears":0})
 # found the method of lineBreak from LepordShark from StackOverflow
+order = []
 
 
 def lineBreak():
@@ -57,22 +59,24 @@ class Menu():
             self.quantitiy = quantity
 
 def populate_menu():
-    menu_items = []
-    for item in APPETIZER_ITEMS[1]:
-       Menu([item])
-    print(menu_items)
-
+    pass
+    
 
 def orderUp():
     populate_menu()
+    # print('menu_dict before order',menu_dict)
     order_request = input("> ").capitalize()
-
-    order = []
-   
+    order.append(order_request )
+    # print('My Order', order)
 
     if (order_request != "Quit"):
-        print(f"** 1 order of {order_request} have been added to your meal **")
-        order_request = input("> ")
+        
+        # print('order:', order_request)
+        menu_dict[order_request] += 1
+        print(f"** {menu_dict[order_request]} order of {order_request}(s) have been added to your meal **")
+            # print('menu_dict after order',menu_dict)
+        orderUp()
+
     else:
         print("bye")
 
