@@ -9,61 +9,54 @@ menu_dict = dict({"Wings":0, "Cookies":0, "Spring Rolls":0,"Salmon":0, "Steak":0
 order = []
 
 
-def lineBreak():
+def line_break():
     for x in range(0, 37):
         print("*", end='', flush=True)
     print("*")
 
 
-def centerText(text):
+def center_text(text):
     print("**", end='', flush=True)
     str = text
     print(str.center(34), end='', flush=True)
     print("**")
 
 
-def underlineText(text):
+def underline_text(text):
     text_length = len(text)
     for x in range(0, text_length - 1):
         print("-", end='', flush=True)
     print("-")
 
 
-def welcomeMessage():
-    lineBreak()
-    centerText("Welcome to the Snakes Cafe!")
-    centerText("Please see our menu below")
-    centerText("")
-    centerText("To quit at any time, type \"quit\"")
-    lineBreak()
+def welcome_message():
+    line_break()
+    center_text("Welcome to the Snakes Cafe!")
+    center_text("Please see our menu below")
+    center_text("")
+    center_text("To quit at any time, type \"quit\"")
+    line_break()
     print()
 
 
-def menuList(array):
+def menu_list(array):
     print(f"{array[0]}")
-    underlineText(array[0])
+    underline_text(array[0])
     array_length = len(array[1])
     for x in range(0, array_length):
         print(array[1][x])
     print()
 
 
-def orderPrompt():
-    lineBreak()
-    centerText("What would you like to order?")
-    lineBreak()
+def order_prompt():
+    line_break()
+    center_text("What would you like to order?")
+    line_break()
 
-class Menu():
-        def __init__(self, name, quantity = 0):
-            self.name = name
-            self.quantitiy = quantity
-
-def populate_menu():
-    pass
     
 
-def orderUp():
-    populate_menu()
+def order_up():
+    
     # print('menu_dict before order',menu_dict)
     order_request = input("> ").capitalize()
     order.append(order_request )
@@ -75,21 +68,21 @@ def orderUp():
         menu_dict[order_request] += 1
         print(f"** {menu_dict[order_request]} order of {order_request}(s) have been added to your meal **")
             # print('menu_dict after order',menu_dict)
-        orderUp()
+        order_up()
 
     else:
         print("bye")
 
 
 
-def initalPrompt():
-    welcomeMessage()
-    menuList(APPETIZER_ITEMS)
-    menuList(ENTREE_ITEMS)
-    menuList(DESSERT_ITEMS)
-    menuList(DRINK_ITEMS)
-    orderPrompt()
+def inital_prompt():
+    welcome_message()
+    menu_list(APPETIZER_ITEMS)
+    menu_list(ENTREE_ITEMS)
+    menu_list(DESSERT_ITEMS)
+    menu_list(DRINK_ITEMS)
+    order_prompt()
 
 
-initalPrompt()
-orderUp()
+inital_prompt()
+order_up()
